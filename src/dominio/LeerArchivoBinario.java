@@ -1,4 +1,3 @@
-
 package dominio;
 
 import java.io.FileInputStream;
@@ -9,9 +8,11 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class LeerArchivoBinario {
+
     ObjectInputStream entrada;
     FileInputStream archivo;
-    public void abrir(){
+
+    public void abrir() {
         try {
             archivo = new FileInputStream("binario.ser");
             entrada = new ObjectInputStream(archivo);
@@ -29,16 +30,16 @@ public class LeerArchivoBinario {
         String nombre;
         int edad;
         double estatura;
-        int t = 0;
+
         try {
 
-                per = (Persona) entrada.readObject();
-                nombre = per.getNombre();
-                edad = per.getEdad();
-                estatura = per.getEstatura();
-                System.out.println("Nombre: " + nombre);
-                System.out.println("Edad: " + edad);
-                System.out.println("Estatura: " + estatura);
+            per = (Persona) entrada.readObject();
+            nombre = per.getNombre();
+            edad = per.getEdad();
+            estatura = per.getEstatura();
+            System.out.println("Nombre: " + nombre);
+            System.out.println("Edad: " + edad);
+            System.out.println("Estatura: " + estatura);
 
 
         } catch (IOException ex) {
@@ -46,20 +47,18 @@ public class LeerArchivoBinario {
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(LeerArchivoBinario.class.getName()).log(Level.SEVERE, null, ex);
         }
-     
+
     }
-         
-      
-    public void cerrar(){
-        if(entrada!=null){
+
+    public void cerrar() {
+        if (entrada != null) {
             try {
                 entrada.close();
             } catch (IOException ex) {
                 Logger.getLogger(LeerArchivoBinario.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
-        
-    }
-        
+
     }
 
+}
